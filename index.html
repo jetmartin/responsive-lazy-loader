@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:og="http://opengraphprotocol.org/schema/">
+<head>
+    <base href="/" />
+	<title>[Responsive lazy loader]</title>
+	<meta charset="utf-8"/>
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"/>      
+	<meta name="Description" content="" />
+	<meta name="Keywords" content="" />
+	<meta name="Author" content="@j_et_martin" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+	<meta name="apple-mobile-web-app-title" content="">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone-retina.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="touch-icon-ipad-retina.png" />
+
+    <link rel="shortcut icon" href="" />
+    <link rel="icon" href="" />
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+	
+	<script src="js/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body>
+
+<div id="main-container">
+	<h1>Responsive lazy loader</h1>
+    <section class="container">
+        <div class="row">
+        	<div class="col-md-12">
+        		<h2>Main fraime</h2>
+        		<p>Responsive lazy loader allow you lo load the most apropriate image renditions according to the current breakpoint and to the curent display into the CSS grid-system.</p>
+        		<p>It could be used as a simple lazy loader as well a juste responsive layloader (taking care of the breakpoint) or as advance lazyloader taking care of breakpoint and display.</p>
+        		<h3>How it works</h3>
+        		<p>The lazy loader recognize the current display (size in a grid system as an exemple) and breakpoint (mediaquery) and replace a token in the image URL.</p>
+        		<p>It works with any HTML/CSS strucutre/framwork as bootstrap or fundation and any image provider as Flickr or CMS using image preset (, rendition, styles, ...) as Adobe CQ or Drupal.</p>
+        		<p>The plugin is only 3Ko (minified).</p>
+        		<p><a href="demo.html" title="view he demo">View the demo</a></p>
+        		
+        		<h2>How to use</h2>
+        		<h3>HTML</h3>
+        		<p>Replace you img tags by th following one :</p>
+        		<pre>&lt;img class="img-responsive" data-src="http://www.domain.tld/img-[[display]].jpg" src="js/pixel.gif" alt="image"&gt;
+&lt;noscript&gt;&lt;img class="image-asset" src="http://www.domain.tld/img-defaults.jpg" alt="image"&gt;&lt;/noscript&gt;</pre>
+        		<h3>CSS</h3>
+				<p>The image size must be 100% for the image to be "responsive" it means that the image will be adjusted to the parent element. You must steup your breakpoint to never upscale an image and load the smallest image just bigger than the maximum display width.
+					<br />As an exemple if your site is 1200px on desktop you have to load an image as close as possible as 1200px but on a phone, if you max-width is 320 pixels, you have to load a smaller image as close as possible as 320 but not smallest.</p>
+				<p>For a nice display, you need to use a "loader" background for the images and/or an outline.
+					<br />It could be something like : </p>
+				<pre>.img-responsive{
+	width:100%;
+	outline:#aaa;
+	background:#ccc url(../img/loader.gif) center center no-repeat;
+}</pre>
+				<p>Add the noscript fallback :</p>
+				<pre>&lt;noscript&gt;&lt;style type="text/css" media="all"&gt;img[data-src] { display: none; }&lt;/style&gt;&lt;/noscript&gt;</pre>
+				<p>Always use the "desktop" as default values because almost all the modern devices browser support mediaqueries detections. This is not the case of old desktop browsers as old IE so the current mediaquery will always be the "defaults" one. Even on old browser the display will be recognized and the appropriate image will be loaded anyway.</p>
+				<h3>Tip</h3>
+				<p>The height auto is not displayed the same way on all the browsers.</p>
+				<p>To prevent the image height to update on image load (text moving effect in some browsers), the image heights has to be managed in CSS according to the site layout.</p>
+				<p>If all the images do not necessary have the same ratio (as 16/9 or 4/3). You can use the onImageShow callback function for custom actions.</p>
+				<h3>How to use</h3>
+				<p>You can add arguments on the function call or owerride the defaults.</p>
+				<pre>$("img[data-src]").responsivelazyloader({
+	mediaQueries : {  // The mediaqueries used by the lazyloder.
+	  'phone'   : "(max-width: 767px)",
+	  'tablet'  : "(min-width: 768px) and (max-width: 991px)",
+	  'desktop' : "(min-width: 992px)"
+	},
+	displays : {  // The displays to combine grid system & mediaqueries
+		'defaults' : {
+			'display' : {
+				'desktop'  : 'b',	//1024
+				'tablet'   : 'z',	//640
+				'phone'    : 'm',	//320
+				'defaults' : 'b'	//1024
+			}
+		}
+	}
+});</pre>
+				<p>Or</p>
+				<pre>// Owerrde defaults
+$.fn.responsivelazyloader.defaults.mediaQueries = {  // The mediaqueries used by the lazyloder.
+		'phone'    : "(max-width: 767px)",
+		'tablet'   : "(min-width: 768px) and (max-width: 991px)",
+		'desktop'  : "(min-width: 992px)"
+	};
+$.fn.responsivelazyloader.defaults.displays = {	// The displays to combine grid system & mediaqueries
+		'defaults' : {
+			'display' : {
+				'desktop'  : 'b',	//1024
+				'tablet'   : 'z',	//640
+				'phone'    : 'm',	//320
+				'defaults' : 'b'	//1024
+			}
+		}
+	};
+$("img[data-src]").responsivelazyloader();</pre>
+				<h3>AJAX</h3>
+				<p>The lazyloader can be used with AJAX.</p>
+				<pre>// Init lazyloader
+$("img[data-src]").responsivelazyloader();
+// Init lazyloder after ajax events.
+$("body").on({ ajaxStop : function(){ $("img[data-src]").responsivelazyloader(); }});</pre>
+				<h3>Settings</h3>
+				<p>All available settings :</p>
+				<ul>
+					<li>distance				= Int | distance of the image to the viewable browser screen before it gets loaded</li>
+					<li>token					= string | The token replaced by the current display pattern.</li>
+					<li>force					= Bool | Force loading without distance.</li>
+					<li>mediaQueries			= Object | The mediaquery used by the lazy loader.</li>
+					<li>displays				= Object | The display properties, match the grid class and the mediaqueries</li>
+					<li>onImageShow			= function | Callback when an image has been lazy loaded.</li>
+					<li>onImageError			= function | Callback when an image could not be lazy loaded.</li>
+					<li>onAllImagesLoad 		= function | Callback when all the images of the set are loaded.</li>
+					<li>Custom events :
+						<ul>
+							<li>responsiveImageLoaded -> Trigger on each image load. Custom var :
+								<br />- image : The currently loaded image.</li>
+							<li>onMediaqueryChange -> Trigger when mediaquery has change. Custom var :
+								<br />- CurrentMediaQuery : the current mediaquery key according to Settings.mediaQueries.
+								<br />- PreviousMediaQuery : The previous mediaquery key according to Settings.mediaQueries.</li>
+						</ul></li>
+					</ul>
+				<h3>Debug</h3>
+				<p>To help you setup the lazyloader, you can use the following code :</p>
+				<pre>$(window).on('responsiveImageLoaded', function(event){
+	$image = $(event.image[0]);
+	$image.next().remove();
+	$image.after(
+		"&lt;p&gt;Current mediaquerry : " + $image.attr("data-current-mediaq")
+		+ "&lt;br /&gt;Current display : " + $image.attr("data-display") + "&lt;/p&gt;"
+	);
+});</pre>
+
+				<h2>More</h2>
+				<p>You can also use Responsive Lazy Loader on Drupal using our Drupal Module.</p>
+				<p>For more information please contact me @j_et_martin.</p>
+			</div>
+        </div>    
+    </section>
+    
+</div><!-- /main-container -->	
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" charset="utf-8"></script>    
+</body>
+</html>

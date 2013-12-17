@@ -1,0 +1,5 @@
+.img-responsive{
+	width:100%;
+	outline:#aaaaaa;
+	background:#cccccc url(../img/loader.gif) center center no-repeat;
+}
