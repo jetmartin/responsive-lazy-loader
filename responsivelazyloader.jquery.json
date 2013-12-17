@@ -1,5 +1,5 @@
 {
-  "name": "Responsive lazy loader",
+  "name": "responsivelazyloader",
   "version": "0.1.0",
   "dependencies": {
     "jquery": "1.3"
