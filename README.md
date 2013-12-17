@@ -147,14 +147,20 @@ $(window).on('responsiveImageLoaded', function(event){
 	$image = $(event.image[0]);
 	$image.next().remove();
 	$image.after(
-		"&lt;p&gt;Current mediaquerry : " + $image.attr("data-current-mediaq")
-		+ "&lt;br /&gt;Current display : " + $image.attr("data-display") + "&lt;/p&gt;"
+		"<p>Current mediaquerry : " + $image.attr("data-current-mediaq")
+		+ "<br />Current display : " + $image.attr("data-display") + "</p>"
 	);
 });
 ```
 
 ##More
 
-You can also use Responsive Lazy Loader on Drupal using our Drupal Module.
+See the responsive lazy loader page on jQuery : http://plugins.jquery.com/responsivelazyloader
+
+You can also use Responsive Lazy Loader on Drupal using our Drupal Module : https://drupal.org/sandbox/jetmartin/2158105
 
 For more information please contact me @j_et_martin.
+
+##Valtech
+
+This module is supported by Valtech : http://www.valtech.fr
