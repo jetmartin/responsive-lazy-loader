@@ -16,6 +16,8 @@ The lazy loader recognize the current display (size in a grid system as an exemp
 It works with any HTML/CSS strucutre/framwork as bootstrap or fundation and any image provider as Flickr or CMS using image preset (, rendition, styles, ...) as Adobe CQ or Drupal.
 
 The plugin is only 3Ko (minified).
+
+View a demo at http://jetmartin.github.io/responsive-lazy-loader/demo.html.
         		
 ##How to use
 
