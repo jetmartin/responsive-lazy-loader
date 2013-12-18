@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Responsive-lazy-loader : A responsive lazy loader. Load image rendition according to CSS display &amp; breakpoint." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Responsive-lazy-loader</title>
+    <style>
+    .img-responsive{
+        width:99%;
+        padding:0;
+        outline:#aaaaaa;
+        background:#cccccc url(../images/loader.gif) center center no-repeat;
+	}
+	.col-md-8 {
+		float:left;
+		width:70%;
+	}
+	.col-md-4 {
+		float:left;
+		width:30%;
+	}
+	@media (max-width: 380px) {
+		.col-md-8, .col-md-4 {
+			float:left;
+			width:100%;
+		}
+	}
+    </style>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jetmartin/responsive-lazy-loader">View on GitHub</a>
+
+          <h1 id="project_title">Responsive-lazy-loader Demo</h1>
+          <h2 id="project_tagline">The current breakpoint is <span class="currentbreakpoint"></span>.</h2>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1><a name="responsive-lazy-loader" class="anchor" href="#responsive-lazy-loader"><span class="octicon octicon-link"></span></a>Responsive lazy loader demo</h1>
+
+        <div class="row">
+			<div class="col-md-8">
+                <img class="img-responsive" data-src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_[[display]].jpg" src="images/pixel.gif" alt="image">
+                <noscript><img class="image-asset" src="http://farm7.staticflickr.com/6022/5921821207_cfe8904e15_z.jpg" alt="image"></noscript>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" data-src="http://farm6.staticflickr.com/5502/11414867446_accb4a5f77_[[display]].jpg" src="images/pixel.gif" alt="image">
+                <noscript><img class="image-asset" src="http://farm7.staticflickr.com/6022/5921821207_cfe8904e15_z.jpg" alt="image"></noscript>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+		        <img class="img-responsive" data-src="http://farm3.staticflickr.com/2815/11415002073_acd0965446_[[display]].jpg" src="images/pixel.gif" alt="image">
+		        <noscript><img class="image-asset" src="http://farm7.staticflickr.com/6022/5921821207_cfe8904e15_z.jpg" alt="image"></noscript>
+		    </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Responsive-lazy-loader maintained by <a href="https://github.com/jetmartin">jetmartin</a></p>
+      </footer>
+    </div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" charset="utf-8"></script>
+<noscript><style type="text/css" media="all">img[data-src] { display: none; }</style></noscript>
+<script type="text/javascript" src="javascripts/jquery.responsivelazyloader.min.js" charset="utf-8"></script>
+<script>
+
+/**
+ * Override defaults
+ */ 
+//exemple of different kind of breakpoint. Not necessary the one to use...
+$.fn.responsivelazyloader.defaults.mediaQueries = {  // The mediaqueries used by the lazyloder.
+                  'phone'                 : "(max-width: 380px)",
+                  'tablet'                : "(min-width: 381px) and (max-width: 991px)",
+                  'phone-retina'          : "(max-width: 380px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 380px) and (min-resolution: 192dpi), (max-width: 380px) and (min-resolution: 2dppx)",
+                  'tablet-retina'         : "(min-width: 381px) and (max-width: 991px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 381px) and (max-width: 991px) and (min-resolution: 192dpi), (min-width: 381px) and (max-width: 991px) and (min-resolution: 2dppx)",
+                  'desktop'               : "(min-width: 992px) and (max-width: 1200px)"
+                  // in this demo the "defaults" will be larger than desktop > 1200px.
+        };
+// The displays to combine grid system (bootstrap), mediaqueries and flickr images.
+// This is just an exemple (not using the retina stuff, loading the defaults on retina).
+$.fn.responsivelazyloader.defaults.displays = {        
+        'col-md-8' : {
+                'parent' : '.col-md-8',
+                'gridClass' : 'col-md-8',
+                'display' : {
+                        'phone' : 'n',                //320
+                        'defaults' : ''        //500
+                }
+        },
+        'col-md-4' : {
+                'parent' : '.col-md-4',
+                'gridClass' : 'col-md-4',
+                'display' : {
+                        'desktop' : 'm',                //240
+                        'tablet' : 'm',                //240
+                        'phone' : 'n',                //320
+                        'defaults' : ''        //500
+                }
+        },
+        'defaults' : {
+                'display' : {
+                        'desktop' : 'b',        //1024
+                        'tablet' : 'z',                //640
+                        'phone' : 'n',                //320
+                        'defaults' : 'b'        //1024
+                }
+        }
+    };
+        
+/**
+ *  Use callbacks & chain functions exemple
+ */
+$("img[data-src]").responsivelazyloader({
+        onImageShow:function () {
+                //Debug using callback function.
+                $(this).next().remove();
+                $(this).after(
+                        "<p>Current mediaquerry : " + $(this).attr("data-current-mediaq") 
+                        + "<br />Current display : " + $(this).attr("data-display") + "</p>"
+                );
+        }
+});
+$(document).ready(function(){
+	$('.currentbreakpoint').text($.fn.responsivelazyloader.getCurrentMediaQuery());
+});
+$(window).on('onMediaqueryChange', function(event){
+        console.log('mediaq change', event.CurrentMediaQuery);
+        $('.currentbreakpoint').text(event.CurrentMediaQuery);
+});
+</script>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-46561768-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
