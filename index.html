@@ -39,16 +39,16 @@
 <h2>
 <a name="main-fraime" class="anchor" href="#main-fraime"><span class="octicon octicon-link"></span></a>Main fraime</h2>
 
-<p>Responsive lazy loader allow you lo load the most apropriate image renditions according to the current breakpoint and to the curent display into the CSS grid-system.</p>
+<p>Responsive lazy loader allows you lo load the most appropriate image renditions according to the current breakpoint and to the current display into the CSS grid-system.</p>
 
-<p>It could be used as a simple lazy loader as well a juste responsive layloader (taking care of the breakpoint) or as advance lazyloader taking care of breakpoint and display.</p>
+<p>It can be used as a simple lazy loader, simply as a responsive lazy loader (taking care of the breakpoint) or as an advanced lazy loader taking care of breakpoint and display.</p>
 
 <h3>
 <a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How it works</h3>
 
-<p>The lazy loader recognize the current display (size in a grid system as an exemple) and breakpoint (mediaquery) and replace a token in the image URL.</p>
+<p>The lazy loader recognizes the current display (size in a grid system for example) and breakpoint (mediaquery) and replaces a token in the image URL.</p>
 
-<p>It works with any HTML/CSS strucutre/framwork as bootstrap or fundation and any image provider as Flickr or CMS using image preset (, rendition, styles, ...) as Adobe CQ or Drupal.</p>
+<p>It works with any HTML/CSS structure/framework as bootstrap or foundation and any image provider as Flickr or CMS using image preset (rendition, styles, ...) as Adobe CQ or Drupal.</p>
 
 <p>The plugin is only 3Ko (minified).</p>
 
@@ -58,7 +58,7 @@
 <h3>
 <a name="html" class="anchor" href="#html"><span class="octicon octicon-link"></span></a>HTML</h3>
 
-<p>Replace you img tags by th following one :</p>
+<p>Replace your img tags by the following :</p>
 
 <div class="highlight highlight-html"><pre><span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"img-responsive"</span> <span class="na">data-src=</span><span class="s">"http://www.domain.tld/img-[[display]].jpg"</span> <span class="na">src=</span><span class="s">"js/pixel.gif"</span> <span class="na">alt=</span><span class="s">"image"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;noscript&gt;&lt;img</span> <span class="na">class=</span><span class="s">"image-asset"</span> <span class="na">src=</span><span class="s">"http://www.domain.tld/img-defaults.jpg"</span> <span class="na">alt=</span><span class="s">"image"</span><span class="nt">&gt;&lt;/noscript&gt;</span>
@@ -67,11 +67,11 @@
 <h3>
 <a name="css" class="anchor" href="#css"><span class="octicon octicon-link"></span></a>CSS</h3>
 
-<p>The image size must be 100% for the image to be "responsive" it means that the image will be adjusted to the parent element. You must steup your breakpoint to never upscale an image and load the smallest image just bigger than the maximum display width.</p>
+<p>The image size must be at 100% for the image to be "responsive", it means that the image will be adjusted to the parent element. You must set up your breakpoint to never upscale an image and to load the image closest to the maximum display width.</p>
 
-<p>As an exemple if your site is 1200px on desktop you have to load an image as close as possible as 1200px but on a phone, if you max-width is 320 pixels, you have to load a smaller image as close as possible as 320 but not smallest.</p>
+<p>For example, if your site is 1200px on desktop you have to load an image as close as possible to 1200px but on a phone, if your max-width is 320 pixels, you have to load an image as close as possible to 320 but not too small.</p>
 
-<p>For a nice display, you need to use a "loader" background for the images and/or an outline.
+<p>For a nice display, you need to use a "loader" background for the images and/or outline.
 It could be something like :</p>
 
 <div class="highlight highlight-css"><pre><span class="nc">.img-responsive</span><span class="p">{</span>
@@ -86,20 +86,20 @@ It could be something like :</p>
 <div class="highlight highlight-html"><pre><span class="nt">&lt;noscript&gt;&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span> <span class="na">media=</span><span class="s">"all"</span><span class="nt">&gt;img</span><span class="o">[</span><span class="nt">data-src</span><span class="o">]</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;&lt;/noscript&gt;</span>
 </pre></div>
 
-<p>Always use the "desktop" as default values because almost all the modern devices browser support mediaqueries detections. This is not the case of old desktop browsers as old IE so the current mediaquery will always be the "defaults" one. Even on old browser the display will be recognized and the appropriate image will be loaded anyway.</p>
+<p>Always use the "desktop" as default value because almost all modern device browsers support mediaqueries detections. This is not the case for old desktop browsers, such as old IE, so the current mediaquery will always be the "defaults" one. Even in an old browser, the display will be recognized and the appropriate image will load anyway.</p>
 
 <h3>
 <a name="tip" class="anchor" href="#tip"><span class="octicon octicon-link"></span></a>Tip</h3>
 
 <p>The height auto is not displayed the same way on all the browsers.
-To prevent the image height to update on image load (text moving effect in some browsers), the image heights has to be managed in CSS according to the site layout.</p>
+To prevent the image height to change on an image load (text moving effect in some browsers), the image height has to be managed in CSS according to the site layout.</p>
 
-<p>If all the images do not necessary have the same ratio (as 16/9 or 4/3). You can use the onImageShow callback function for custom actions.</p>
+<p>If all the images do not necessary have the same ratio (as 16/9 or 4/3), you can use the onImageShow callback function for custom actions.</p>
 
 <h2>
 <a name="how-to-configure" class="anchor" href="#how-to-configure"><span class="octicon octicon-link"></span></a>How to configure</h2>
 
-<p>You can add arguments on the function call or owerride the defaults.</p>
+<p>You can add arguments on the function call or override the defaults.</p>
 
 <div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"img[data-src]"</span><span class="p">).</span><span class="nx">responsivelazyloader</span><span class="p">({</span>
     <span class="nx">mediaQueries</span> <span class="o">:</span> <span class="p">{</span>  <span class="c1">// The mediaqueries used by the lazyloder.</span>
@@ -196,7 +196,7 @@ To prevent the image height to update on image load (text moving effect in some 
 
 <p>You can also use Responsive Lazy Loader on Drupal using our Drupal Module : <a href="https://drupal.org/sandbox/jetmartin/2158105">https://drupal.org/sandbox/jetmartin/2158105</a></p>
 
-<p>For more information please contact me @j_et_martin.</p>
+<p>For more information, please contact me @j_et_martin.</p>
 
 <h2>
 <a name="valtech" class="anchor" href="#valtech"><span class="octicon octicon-link"></span></a>Valtech</h2>
