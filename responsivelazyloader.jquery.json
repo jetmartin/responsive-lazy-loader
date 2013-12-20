@@ -1,6 +1,6 @@
 {
   "name": "responsivelazyloader",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "dependencies": {
     "jquery": ">=1.3"
   },
@@ -8,7 +8,7 @@
     "modernizr": ""
   },
   "title": "jQuery Responsive Lazy Loader",
-  "description": "Allow you to load images renditions according to the current mediaqueries and/or CSS display such as a grid system. As an exemple, it allow you to load large images on retina display and small ones on oter devices. It can be used with a flicker account as well as CMS renditions and a grid system as bootstrap or some custom HTML structure.",
+  "description": "Allow you to load image renditions according to the current mediaqueries and/or CSS display such as a grid system. For example, it allows you to load large images on retina display and small ones on other devices. It can be used with a flickr account as well as with CMS renditions and a grid system as bootstrap or some custom HTML structure.",
   "keywords": [
     "jquery",
     "responsive",

@@ -3,17 +3,17 @@ responsive-lazy-loader
 
 A responsive lazy loader. Load image rendition according to CSS display &amp; breakpoint.
 
-##Main fraime
+##Main frame
 
-Responsive lazy loader allow you lo load the most apropriate image renditions according to the current breakpoint and to the curent display into the CSS grid-system.
+Responsive lazy loader allows you lo load the most appropriate image renditions according to the current breakpoint and to the current display into the CSS grid-system.
 
-It could be used as a simple lazy loader as well a juste responsive layloader (taking care of the breakpoint) or as advance lazyloader taking care of breakpoint and display.
+It can be used as a simple lazy loader, simply as a responsive lazy loader (taking care of the breakpoint) or as an advanced lazy loader taking care of breakpoint and display.
 
 ###How it works
 
-The lazy loader recognize the current display (size in a grid system as an exemple) and breakpoint (mediaquery) and replace a token in the image URL.
+The lazy loader recognizes the current display (size in a grid system for example) and breakpoint (mediaquery) and replaces a token in the image URL.
 
-It works with any HTML/CSS strucutre/framwork as bootstrap or fundation and any image provider as Flickr or CMS using image preset (, rendition, styles, ...) as Adobe CQ or Drupal.
+It works with any HTML/CSS structure/framework as bootstrap or foundation and any image provider as Flickr or CMS using image preset (rendition, styles, ...) as Adobe CQ or Drupal.
 
 The plugin is only 3Ko (minified).
 
@@ -23,7 +23,7 @@ View a demo at http://jetmartin.github.io/responsive-lazy-loader/demo.html.
 
 ###HTML
 
-Replace you img tags by th following one :
+Replace your img tags by the following :
 
 ```html
 <img class="img-responsive" data-src="http://www.domain.tld/img-[[display]].jpg" src="js/pixel.gif" alt="image">
@@ -32,11 +32,11 @@ Replace you img tags by th following one :
 
 ###CSS
 
-The image size must be 100% for the image to be "responsive" it means that the image will be adjusted to the parent element. You must steup your breakpoint to never upscale an image and load the smallest image just bigger than the maximum display width.
+The image size must be at 100% for the image to be "responsive", it means that the image will be adjusted to the parent element. You must set up your breakpoint to never upscale an image and to load the image closest to the maximum display width.
 
-As an exemple if your site is 1200px on desktop you have to load an image as close as possible as 1200px but on a phone, if you max-width is 320 pixels, you have to load a smaller image as close as possible as 320 but not smallest.</p>
+For example, if your site is 1200px on desktop you have to load an image as close as possible to 1200px but on a phone, if your max-width is 320 pixels, you have to load an image as close as possible to 320 but not too small.</p>
 
-For a nice display, you need to use a "loader" background for the images and/or an outline.
+For a nice display, you need to use a "loader" background for the images and/or outline.
 It could be something like :
 
 ```css
@@ -53,18 +53,18 @@ Add the noscript fallback :
 <noscript><style type="text/css" media="all">img[data-src] { display: none; }</style></noscript>
 ```
 
-Always use the "desktop" as default values because almost all the modern devices browser support mediaqueries detections. This is not the case of old desktop browsers as old IE so the current mediaquery will always be the "defaults" one. Even on old browser the display will be recognized and the appropriate image will be loaded anyway.
+Always use the "desktop" as default value because almost all modern device browsers support mediaqueries detections. This is not the case for old desktop browsers, such as old IE, so the current mediaquery will always be the "defaults" one. Even in an old browser, the display will be recognized and the appropriate image will load anyway.
 
 ###Tip
 
 The height auto is not displayed the same way on all the browsers.
-To prevent the image height to update on image load (text moving effect in some browsers), the image heights has to be managed in CSS according to the site layout.
+To prevent the image height to change on an image load (text moving effect in some browsers), the image height has to be managed in CSS according to the site layout.
 
-If all the images do not necessary have the same ratio (as 16/9 or 4/3). You can use the onImageShow callback function for custom actions.
+If all the images do not necessary have the same ratio (as 16/9 or 4/3), you can use the onImageShow callback function for custom actions.
 
 ##How to configure
 
-You can add arguments on the function call or owerride the defaults.
+You can add arguments on the function call or override the defaults.
 
 ```javascript
 $("img[data-src]").responsivelazyloader({
@@ -161,7 +161,7 @@ See the responsive lazy loader page on jQuery : http://plugins.jquery.com/respon
 
 You can also use Responsive Lazy Loader on Drupal using our Drupal Module : https://drupal.org/sandbox/jetmartin/2158105
 
-For more information please contact me @j_et_martin.
+For more information, please contact me @j_et_martin.
 
 ##Valtech
 
