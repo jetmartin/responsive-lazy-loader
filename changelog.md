@@ -1,6 +1,10 @@
 responsive-lazy-loader
 ======================
 
+##O.1.5 : 
+
+Update mainfest.
+
 ##O.1.4 : 
 
 Parent became optional, gridClass will be used if parent is not specified.

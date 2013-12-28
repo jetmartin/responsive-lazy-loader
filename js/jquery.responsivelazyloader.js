@@ -40,7 +40,7 @@
  * 		- CurrentMediaQuery : the current mediaquery key according to Settings.mediaQueries.
  * 		- PreviousMediaQuery : The previous mediaquery key according to Settings.mediaQueries.
  *
- * Version 0.1.4
+ * Version 0.1.5
  * 
  * dependancie : jquery 1.3.1
  * optional : modernizer compile with mq() function.

@@ -1,6 +1,6 @@
 {
   "name": "responsivelazyloader",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "dependencies": {
     "jquery": ">=1.3"
   },
