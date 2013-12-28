@@ -18,7 +18,7 @@ $.fn.responsivelazyloader.defaults.mediaQueries = {  // The mediaqueries used by
 // This is just an exemple (not using the retina stuff, loading the defaults on retina).
 $.fn.responsivelazyloader.defaults.displays = {	
 			'col-md-8' : {
-				'parent' : '.col-md-8',
+				//'parent' : '.col-md-8',   // optional if == gridClass
 				'gridClass' : 'col-md-8',
 				'display' : {
 					'phone' : 'n',		//500
@@ -26,7 +26,7 @@ $.fn.responsivelazyloader.defaults.displays = {
 				}
 			},
 			'col-md-4' : {
-				'parent' : '.col-md-4',
+				//'parent' : '.col-md-4',   // optional if == gridClass
 				'gridClass' : 'col-md-4',
 				'display' : {
 					'desktop' : 'n',		//500

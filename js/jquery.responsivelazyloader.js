@@ -40,7 +40,7 @@
  * 		- CurrentMediaQuery : the current mediaquery key according to Settings.mediaQueries.
  * 		- PreviousMediaQuery : The previous mediaquery key according to Settings.mediaQueries.
  *
- * Version 0.1.3
+ * Version 0.1.4
  * 
  * dependancie : jquery 1.3.1
  * optional : modernizer compile with mq() function.
@@ -93,7 +93,7 @@
 			var currentDisplay = 'defaults'; // Default display (fallback)
 			for (display in settings.displays)
 			{
-				if( $(image).closest(settings.displays[display].parent).hasClass(settings.displays[display].gridClass)) {
+				if( $(image).closest((settings.displays[display].parent != undefined) ? settings.displays[display].parent : '.' + settings.displays[display].gridClass).hasClass(settings.displays[display].gridClass)) {
 					currentDisplay = display;
 					break;
 				}
