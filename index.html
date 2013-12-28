@@ -102,6 +102,43 @@ $.fn.responsivelazyloader.defaults.displays = {	// The displays to combine grid 
 		}
 	};
 $("img[data-src]").responsivelazyloader();</pre>
+
+				<p>An advance configuration using displays. The first valid display will be used.</p>
+				<p>The "parent" parameter is now optional. "gridClass" parameter will be use as "parent" if it is not specified.
+					<br />"parent" is a jQuery element declaration as ".myParentClass" or "section.myParentClass".
+					<br />"gridClass" is a class name as "myDisplayClass".</p>
+
+				<pre>&lt;section&gt;
+  &lt;article class="sidebar"&gt;{...}&lt;/article&gt;
+  &lt;aside class="sidebar"&gt;{...}&lt;/aside&gt;
+&lt;/section&gt;</pre>
+				<pre>
+$.fn.responsivelazyloader.defaults.displays = { // The displays to combine grid system &amp; mediaqueries
+        'articleWithSidebar' : {
+            'parent' : 'article.sidebar',
+            'gridClass' : 'sidebar',
+            'display' : {
+                'phone'    : 'm',   //320
+                'defaults' : 'z'    //640
+            }
+        },
+        'sidebar' : {
+            'gridClass' : 'sidebar',
+            'display' : {
+                'defaults' : 'm'    //320
+            }
+        },
+        'defaults' : {
+            'display' : {
+                'desktop'  : 'b',   //1024
+                'tablet'   : 'z',   //640
+                'phone'    : 'm',   //320
+                'defaults' : 'b'    //1024
+            }
+        }
+    };
+</pre>
+	
 				<h3>AJAX</h3>
 				<p>The lazyloader can be used with AJAX.</p>
 				<pre>// Init lazyloader
