@@ -52,7 +52,8 @@
 	 */
 	$.fn.responsivelazyloader = function(options){
 		// Global settings
-		var settings = $.extend($.fn.responsivelazyloader.defaults, options);
+		return this.each(function(){
+			var settings = $.extend($.fn.responsivelazyloader.defaults, options);
 		// Ensure the passed elements are images. 
 		var images = $(this).filter('img');
 		// Counter for custom event when all the images are loaded.
@@ -269,7 +270,8 @@
 		.attr('src', null) // Prevent bad image refresh on desktop window resize.
 		.attr('src', imagesGetDisplay(image)); // Get the appropriate rendition URL and display it.
 		};
-		return images;
+		});
+		
 	};
 
 	/**
