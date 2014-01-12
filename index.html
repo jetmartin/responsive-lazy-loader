@@ -142,11 +142,26 @@ To prevent the image height to change on an image load (text moving effect in so
 <span class="nx">$</span><span class="p">(</span><span class="s2">"img[data-src]"</span><span class="p">).</span><span class="nx">responsivelazyloader</span><span class="p">();</span>
 </pre></div>
 
-<p>An advance configuration using displays. The first valid display will be used.</p>
-<p>The "parent" parameter is now optional. "gridClass" parameter will be use as "parent" if it is not specified.
-	<br />"parent" is a jQuery element declaration as ".myParentClass" or "section.myParentClass".
-	<br />"gridClass" is a class name as "myDisplayClass".</p>
+<h2>
+<a name="how-to-use-breakpoints" class="anchor" href="#how-to-use-breakpoints"><span class="octicon octicon-link"></span></a>How to use Breakpoints (mediaQueries)</h2>
 
+<p>In order to be consistant with CSS declaration, the latest valid mediquery will be used.
+	<br />You can use simple mediaqueries or more complex ones using orientation or pixel-ratio.
+	<br />To start in a simple way with the plugin, copy/past the mediaqueries in the same order from you'r steelsheets.</p>
+
+<h2>
+<a name="use-multiple-displays" class="anchor" href="#use-multiple-displays"><span class="octicon octicon-link"></span></a>Use Multiple displays</h2>
+
+<p>Do not use multiple instances of the plugin, use the displays.</p>
+
+<p>You can declare diffrent configuration for some images in the same page using the displays config element.
+	<br />The first valid display will be used for each image.
+	<br />You can specify multiples "displays" using a "gridClass" (on the image itself or a parent element).
+	<br />The "parent" parameter is now optional. If you decalre a "parent" element, it must have the "gridClass".</p>
+
+<p><strong>"parent"</strong> is a jQuery element declaration as ".myParentClass" or "section.myParentClass".
+	<br /><strong>"gridClass"</strong> is a class name as "myDisplayClass".</p>
+<p>Always use a "defaults" display and a "defaults" on each display to prevent issues and to make display detection usable with old browsers.</p>
 
 <div class="highlight highlight-html"><pre><span class="nt">&lt;section&gt;</span>
   <span class="nt">&lt;article</span> <span class="na">class=</span><span class="s">"sidebar"</span> <span class="nt">&gt;</span>{...}<span class="nt">&lt;/article&gt;</span>
