@@ -1,6 +1,12 @@
 responsive-lazy-loader
 ======================
 
+##O.1.6 : 
+
+Allow to use gridClass on image itself.
+Fix chain function issue.
+Readme update.
+
 ##O.1.5 : 
 
 Update mainfest.

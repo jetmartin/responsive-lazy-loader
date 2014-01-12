@@ -108,10 +108,22 @@ $.fn.responsivelazyloader.defaults.displays = {	// The displays to combine grid 
 $("img[data-src]").responsivelazyloader();
 ```
 
-An advance configuration using displays. The first valid display will be used.
-The "parent" parameter is now optional. "gridClass" parameter will be use as "parent" if it is not specified.
+##How to use Breakpoints (mediaQueries)
+
+In order to be consistant with CSS declaration, the latest valid mediquery will be used.
+You can use simple mediaqueries or more complex ones using orientation or pixel-ratio.
+To start in a simple way with the plugin, copy/past the mediaqueries in the same order from you'r steelsheets.
+
+##Use Multiple displays
+
+Do not use multiple instances of the plugin, use the displays.
+You can declare diffrent configuration for some images in the same page using the displays config element.
+The first valid display will be used for each image.
+You can specify multiples "displays" using a "gridClass" (on the image itself or a parent element).
+The "parent" parameter is now optional. If you ecalre a "parent" element, it must have the "gridClass".
 "parent" is a jQuery element declaration as ".myParentClass" or "section.myParentClass".
-"gridClass" is a class name as "myDisplayClass".</p>
+"gridClass" is a class name as "myDisplayClass".
+Always use a "defaults" display and a "defaults" on each display to prevent issues and to make display detection usable with old browsers.
 
 ```html
 <section>

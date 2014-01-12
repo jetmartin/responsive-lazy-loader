@@ -40,10 +40,10 @@
  * 		- CurrentMediaQuery : the current mediaquery key according to Settings.mediaQueries.
  * 		- PreviousMediaQuery : The previous mediaquery key according to Settings.mediaQueries.
  *
- * Version 0.1.5
+ * Version 0.1.6
  * 
  * dependancie : jquery 1.3.1
- * optional : modernizer compile with mq() function.
+ * optional : modernizr compile with mq() function.
  */
 
 ;(function($){
@@ -85,15 +85,19 @@
 		}
 
 		/**
-		* Set an attribute "data-display" to the corresponding image
-		* of the parent container Display.
+		* Set an attribute "data-display" to the image
+		* The first valid display will be set.
+		* The image or a parent element can have the gridClass
+		* For advance config, You can specify a "parent" element.
+		* In this case, the parent must have the gridClass.
 		* @param {Object} image
 		*/
 		function imagesSetDisplay(image){
 			var currentDisplay = 'defaults'; // Default display (fallback)
 			for (display in settings.displays)
 			{
-				if( $(image).closest((settings.displays[display].parent != undefined) ? settings.displays[display].parent : '.' + settings.displays[display].gridClass).hasClass(settings.displays[display].gridClass)) {
+				if($(image).hasClass(settings.displays[display].gridClass)
+					|| $(image).closest((settings.displays[display].parent != undefined) ? settings.displays[display].parent : '.' + settings.displays[display].gridClass).hasClass(settings.displays[display].gridClass)) {
 					currentDisplay = display;
 					break;
 				}
@@ -269,7 +273,7 @@
 		.attr('src', null) // Prevent bad image refresh on desktop window resize.
 		.attr('src', imagesGetDisplay(image)); // Get the appropriate rendition URL and display it.
 		};
-		return images;
+		return $(this);
 	};
 
 	/**
