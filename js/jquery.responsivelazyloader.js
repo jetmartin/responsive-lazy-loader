@@ -141,7 +141,7 @@
 			}
 		}
 		// Edit the image SRC attribute.
-		return $(image).attr("data-src").replace(settings.token, currentDisplay);
+		return $(image).attr("data-src-"+currentDisplay);
 		};
 	
 		/** 
