@@ -155,7 +155,7 @@
 			images.each(function(){
 				if (windowView(this, settings) || settings.force === true){
 					// Check if this is the first load or if the mediaquery has changed.
-					if($(this).attr('data-src') && $(this).attr('data-current-mediaq')!=CurrentMediaQuery){
+					if($(this).attr('data-current-mediaq')!=CurrentMediaQuery){
 						$(this).attr('data-current-mediaq', CurrentMediaQuery);
 						loadImage(this, callOrigin);
 						$(this).fadeIn(400);
