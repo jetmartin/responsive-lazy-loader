@@ -138,6 +138,74 @@ $.fn.responsivelazyloader.defaults.displays = { // The displays to combine grid 
         }
     };
 </pre>
+
+<h3>Rails asset pipeline compatibility</h3>
+
+<pre>
+
+If you want to use actual asset path (with Fingerprinting) prepared by rails asset pipeline for each responsive image then you should include separate attribute for each display as define below:
+
+e.g.
+
+We want to configure for lazy load image for two responsive screens "phone" and "tablet_plus" :
+
+Our js configuration should look like this :
+
+
+$.fn.responsivelazyloader.defaults.mediaQueries = {  // The mediaqueries used by the lazyloder.
+        'phone': "(max-width: 480px)", 
+        'tablet-plus': "(min-width: 481px)",
+        'desktop-sm': "(min-width: 1201px)  and (max-width: 1440px)", 
+        'desktop-md': "(min-width: 1441px) and (max-width: 1680px)"
+    };
+
+ $.fn.responsivelazyloader.defaults.displays =  {
+
+        'phone-tablet-plus': { // The display name (what you want).
+            'parent': '.phone-tablet-plus', // the class use to recognize the display.
+            'gridClass': 'phone-tablet-plus',
+            'display': {
+                'phone': 'phone',
+                'tablet-plus': 'tablet-plus',
+                'defaults' : 'tablet-plus'
+            }
+        },
+
+        'defaults': { 
+            'display': {
+                'phone': 'phone',
+                'tablet-plus': 'tablet-plus',
+                'desktop-sm': 'desktop-sm',
+                'desktop-md': 'desktop-md'
+            }
+        }
+}
+
+$(window).on("load", function () {
+	$("img.resp_lazy").responsivelazyloader();
+});
+
+
+Our HTML should look like this :
+
+&lt;div class="phone-tablet-plus"&gt;
+    &lt;img 
+    	data-src-phone='<%= image_path('xyz_phone.jpg') %>'
+    	data-src-tablet-plus='<%= image_path('xyz_tablet_plus.jpg') %>'
+    	src='<%= image_path('1x1.gif') %>'
+    	class="resp_lazy" /&gt;
+&lt;/div&gt;
+
+
+Please note then we used attribute with screen name. e.g. to give the asset path with fingerprint for phone display we used "data-src-" + "phone" where "phone" is a display name and same for tablet-plus display.
+
+We need to set attribute values for as many display as we are targeting. Here we are targeting only two display phone and table-plus with "phone-tablet-plus" parent class.
+
+
+</pre>
+
+
+
 	
 				<h3>AJAX</h3>
 				<p>The lazyloader can be used with AJAX.</p>
