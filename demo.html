@@ -38,6 +38,17 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
+          <span  id="share_me">
+            <a
+              href="https://twitter.com/share"
+              class="twitter-share-button"
+              data-lang="en"
+              data-count="none"
+              data-url="http://jetmartin.github.io/responsive-lazy-loader"
+              data-text="Responsive-lazy-loader : Load image rendition according to CSS display & breakpoint.">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </span>
+
           <a id="project_banner" href="index.html">View the project page.</a>
 
           <h1 id="project_title">Responsive-lazy-loader Demo</h1>
@@ -53,17 +64,17 @@
         <div class="row">
 			<div class="col-md-8">
                 <img class="img-responsive" data-src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_[[display]].jpg" src="images/pixel.gif" alt="image">
-                <noscript><img class="image-asset" src="http://farm7.staticflickr.com/6022/5921821207_cfe8904e15_z.jpg" alt="image"></noscript>
+                <noscript><img class="image-asset" src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_z.jpg" alt="image"></noscript>
             </div>
             <div class="col-md-4">
                 <img class="img-responsive" data-src="http://farm6.staticflickr.com/5502/11414867446_accb4a5f77_[[display]].jpg" src="images/pixel.gif" alt="image">
-                <noscript><img class="image-asset" src="http://farm7.staticflickr.com/6022/5921821207_cfe8904e15_z.jpg" alt="image"></noscript>
+                <noscript><img class="image-asset" src="http://farm6.staticflickr.com/5502/11414867446_accb4a5f77_z.jpg" alt="image"></noscript>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
 		        <img class="img-responsive" data-src="http://farm3.staticflickr.com/2815/11415002073_acd0965446_[[display]].jpg" src="images/pixel.gif" alt="image">
-		        <noscript><img class="image-asset" src="http://farm7.staticflickr.com/6022/5921821207_cfe8904e15_z.jpg" alt="image"></noscript>
+		        <noscript><img class="image-asset" src="http://farm3.staticflickr.com/2815/11415002073_acd0965446_z.jpg" alt="image"></noscript>
 		    </div>
         </div>
         <p>The breakpoints used on that demo :</p>
@@ -72,6 +83,46 @@
 'phone-retina'          : "(max-width: 380px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 380px) and (min-resolution: 192dpi), (max-width: 380px) and (min-resolution: 2dppx)",
 'tablet-retina'         : "(min-width: 381px) and (max-width: 991px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 381px) and (max-width: 991px) and (min-resolution: 192dpi), (min-width: 381px) and (max-width: 991px) and (min-resolution: 2dppx)",
 'desktop'               : "(min-width: 992px) and (max-width: 1200px)"</pre>
+<!-- Override data-src example -->
+        <div class="row">
+        	<h2>Override data-src example</h2>
+        	<p>Previous example using attributes to override images by a new one in some cases.</p>
+        	<div class="col-md-8">
+				<img
+					class="img-responsive"
+					data-src-col-md-8="http://farm6.staticflickr.com/5514/11414864075_4d167cbd5c_z.jpg"
+					data-src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_[[display]].jpg"
+					src="img/pixel.gif"
+					alt="image"
+					>
+				<noscript><img class="image-asset" src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_z.jpg" alt="image"></noscript>
+				<p>Alway use the same image for the "<em>col-md-8</em>" display.</p>
+			</div>
+  			<div class="col-md-4">
+				<img
+					class="img-responsive"
+					data-src-tablet="http://farm6.staticflickr.com/5514/11414864075_4d167cbd5c_[[display]].jpg"
+					data-src="http://farm6.staticflickr.com/5502/11414867446_accb4a5f77_[[display]].jpg"
+					src="img/pixel.gif"
+					alt="image"
+					>
+				<noscript><img class="image-asset" src="http://farm6.staticflickr.com/5502/11414867446_accb4a5f77_z.jpg" alt="image"></noscript>
+				<p>Override image on "<em>tablet</em>" breakpoint but use the global lazyloader configuration on the new image according to display & breakpoint.</p>
+			</div>
+        </div>
+        <div class="row">
+        	<div class="col-md-12">
+				<img
+					class="img-responsive"
+					data-src-defaults-desktop="http://farm6.staticflickr.com/5514/11414864075_4d167cbd5c_[[display]].jpg"
+					data-src="http://farm3.staticflickr.com/2815/11415002073_acd0965446_[[display]].jpg"
+					src="img/pixel.gif"
+					alt="image"
+					>
+				<noscript><img class="image-asset" src="http://farm3.staticflickr.com/2815/11415002073_acd0965446_z.jpg" alt="image"></noscript>
+				<p>Override image on "<em>default</em>" display & "<em>desktop</em>" breakpoint but use the global lazyloader configuration on the new image according to display & breakpoint.</p>
+			</div>
+        </div>
       </section>
     </div>
 
