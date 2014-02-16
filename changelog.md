@@ -1,6 +1,10 @@
 responsive-lazy-loader
 ======================
 
+##O.1.7 : 
+
+Allow to override image url for specific display and/or breakpoint.
+
 ##O.1.6 : 
 
 Allow to use gridClass on image itself.

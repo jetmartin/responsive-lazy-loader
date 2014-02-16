@@ -80,7 +80,7 @@ $("img[data-src]").responsivelazyloader({
 	}
 }).attr('data-test', 'TEST');
 // Init lazyloder after ajax events.
-$("body").on({ ajaxStop : function(){ $("img[data-src]").responsivelazyloader(); }});
+$(document).ajaxStop(function(){ $("img[data-src]").responsivelazyloader(); });
 
 
 /**

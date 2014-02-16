@@ -32,8 +32,10 @@
 <div id="main-container">
 
     <section class="container">
+        <h1>Demo</h1>
+    	<!-- Default implementation -->
         <div class="row">
-        	<h1>Demo</h1>
+        	<h2>Default implementation</h2>
         	<p>Using bootstrap CSS and a flickr image.</p>
         	<div class="col-md-8">
 				<img class="img-responsive" data-src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_[[display]].jpg" src="img/pixel.gif" alt="image">
@@ -49,7 +51,48 @@
 				<img class="img-responsive" data-src="http://farm3.staticflickr.com/2815/11415002073_acd0965446_[[display]].jpg" src="img/pixel.gif" alt="image">
 				<noscript><img class="image-asset" src="http://farm7.staticflickr.com/6022/5921821207_cfe8904e15_z.jpg" alt="image"></noscript>
 			</div>
-        </div>    
+        </div>
+        
+    	<!-- Override data-src example -->
+        <div class="row">
+        	<h2>Override data-src example</h2>
+        	<p>Previous example using attributes to override images by a new one in some cases.</p>
+        	<div class="col-md-8">
+				<img
+					class="img-responsive"
+					data-src-col-md-8="http://farm6.staticflickr.com/5514/11414864075_4d167cbd5c_z.jpg"
+					data-src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_[[display]].jpg"
+					src="img/pixel.gif"
+					alt="image"
+					>
+				<noscript><img class="image-asset" src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_z.jpg" alt="image"></noscript>
+				<p>Alway use the same image for the "<em>col-md-8</em>" display.</p>
+			</div>
+  			<div class="col-md-4">
+				<img
+					class="img-responsive"
+					data-src-tablet="http://farm6.staticflickr.com/5514/11414864075_4d167cbd5c_[[display]].jpg"
+					data-src="http://farm6.staticflickr.com/5502/11414867446_accb4a5f77_[[display]].jpg"
+					src="img/pixel.gif"
+					alt="image"
+					>
+				<noscript><img class="image-asset" src="http://farm6.staticflickr.com/5502/11414867446_accb4a5f77_z.jpg" alt="image"></noscript>
+				<p>Override image on "<em>tablet</em>" breakpoint but use the global lazyloader configuration on the new image according to display & breakpoint.</p>
+			</div>
+        </div>
+        <div class="row">
+        	<div class="col-md-12">
+				<img
+					class="img-responsive"
+					data-src-defaults-desktop="http://farm6.staticflickr.com/5514/11414864075_4d167cbd5c_[[display]].jpg"
+					data-src="http://farm3.staticflickr.com/2815/11415002073_acd0965446_[[display]].jpg"
+					src="img/pixel.gif"
+					alt="image"
+					>
+				<noscript><img class="image-asset" src="http://farm3.staticflickr.com/2815/11415002073_acd0965446_z.jpg" alt="image"></noscript>
+				<p>Override image on "<em>default</em>" display & "<em>desktop</em>" breakpoint but use the global lazyloader configuration on the new image according to display & breakpoint.</p>
+			</div>
+        </div>
     </section>
     
 </div><!-- /main-container -->	

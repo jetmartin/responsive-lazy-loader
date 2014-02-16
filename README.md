@@ -159,6 +159,37 @@ $.fn.responsivelazyloader.defaults.displays = { // The displays to combine grid 
     };
 ```
 
+###OVERRIDE IMAGE URL FOR DISPLAY AND/OR BREAKPOINT
+
+The image url can be overriden for a specific display and/or breakpoint using some additionals attributs.
+
+1. "data-src-{display}-{mediaquerie}" will override image url for a combinaison of display & breakpoint.
+2. "data-src-{display}" will override image url for a display.
+2. "data-src-{mediaquerie}" will override image url for a breakpoint (mediaquerie).
+
+Where "{display}" and "{mediaquerie}" are teh display and mediaquerie names in settings array.
+
+Important notice about the "Token" on the image urls.
+
+1. If you use it, the images will be loaded according to the configuration of the lazyloader.
+2. If you do not use it, the same image will be loaded for each displays/breakpoints.
+
+If your CMS/Framwork do not allows you to use non valid images urls (using token), you can use this way to use the lazyloader. In this case, to prevent bugs, set a "data-src-defaults" attribut.
+
+The following exemple is for a breakpoint name "phone" and a display name "sidebar". The image loaded on display "sidebar" will be a specif one using the responsive token. The images loaded for the breakpoint "phone" do not use the responsie token.
+
+```html
+<img
+  class="img-responsive"
+  data-src-sidebar-phone="http://www.domain.tld/an-image.jpg"
+  data-src-sidebar="http://www.domain.tld/another-image-[[display]].jpg"
+  data-src-phone="http://www.domain.tld/a-third-image.jpg"
+  data-src="http://www.domain.tld/image-[[display]].jpg"
+  src="js/pixel.gif"
+  alt="image">
+<noscript><img class="image-asset" src="http://www.domain.tld/image-defaults.jpg" alt="image"></noscript>
+```
+
 ##AJAX
 
 The lazyloader can be used with AJAX.
@@ -167,7 +198,7 @@ The lazyloader can be used with AJAX.
 // Init lazyloader
 $("img[data-src]").responsivelazyloader();
 // Init lazyloder after ajax events.
-$("body").on({ ajaxStop : function(){ $("img[data-src]").responsivelazyloader(); }});
+$(document).ajaxStop(function(){ $("img[data-src]").responsivelazyloader(); });
 ```
 
 ##Settings

@@ -40,7 +40,7 @@
  * 		- CurrentMediaQuery : the current mediaquery key according to Settings.mediaQueries.
  * 		- PreviousMediaQuery : The previous mediaquery key according to Settings.mediaQueries.
  *
- * Version 0.1.6
+ * Version 0.1.7
  * 
  * dependancie : jquery 1.3.1
  * optional : modernizr compile with mq() function.
@@ -109,6 +109,12 @@
 		 * imagesGetDisplay
 		 * Get the image SRC value using the proper rendition name 
 		 * depending of the mediaquery & the image display.
+		 * 
+		 * To override the default "data-src" attribute you can use :
+		 * data-src-{display}-{MediaQuery}
+		 * data-src-{display}
+		 * data-src-{MediaQuery}
+		 * 
 		 * @return string image apropriate src value.
 		 */
 		function imagesGetDisplay(image){
@@ -117,31 +123,53 @@
 			}
 			var activeDisplay = $(image).attr('data-display');
 			var currentDisplay = null;
-		// If explicit display
-		if(activeDisplay){
-			// Set the current display according to the current display and active mediaquery
-		 	if(settings.displays[activeDisplay]) {
-		 		if(settings.displays[activeDisplay].display[CurrentMediaQuery]){
-		 			currentDisplay = settings.displays[activeDisplay].display[CurrentMediaQuery];
-		 		}
-		 		else if(settings.displays[activeDisplay].display.defaults){
-		 			currentDisplay = settings.displays[activeDisplay].display.defaults;
-		 		}
+			// If explicit display
+			if(activeDisplay){
+				// Set the current display according to the current display and active mediaquery
+			 	if(settings.displays[activeDisplay]) {
+			 		if(settings.displays[activeDisplay].display[CurrentMediaQuery]){
+			 			currentDisplay = settings.displays[activeDisplay].display[CurrentMediaQuery];
+			 		}
+			 		else if(settings.displays[activeDisplay].display.defaults){
+			 			currentDisplay = settings.displays[activeDisplay].display.defaults;
+			 		}
+				}
 			}
-		}
-		//Default displays
-		if(!currentDisplay) {
-			// Fallback on current media Query
-			if(settings.displays.defaults.display[CurrentMediaQuery]){
-				currentDisplay = settings.displays.defaults.display[CurrentMediaQuery];
+			//Default displays
+			if(!currentDisplay) {
+				// Fallback on current media Query
+				if(settings.displays.defaults.display[CurrentMediaQuery]){
+					currentDisplay = settings.displays.defaults.display[CurrentMediaQuery];
+				}
+				// Global Fallback
+				else {
+					currentDisplay = settings.displays.defaults.display.defaults;
+				}
 			}
-			// Global Fallback
+			/*
+			 * Edit the image SRC attribute.
+			 */
+			// Override the token By Display-Breakpoint.
+			if($(image).attr('data-src-' + activeDisplay + '-' + CurrentMediaQuery)){
+				return $(image).attr('data-src-' + activeDisplay + '-' + CurrentMediaQuery).replace(settings.token, currentDisplay);
+			}
+			// Override the token By Display.
+			else if($(image).attr('data-src-' + activeDisplay)){
+				return $(image).attr('data-src-' + activeDisplay).replace(settings.token, currentDisplay);
+			}
+			// Override the token By Breakpoint.
+			else if($(image).attr('data-src-' + CurrentMediaQuery)){
+				return $(image).attr('data-src-' + CurrentMediaQuery).replace(settings.token, currentDisplay);
+			}
+			// Use the token.
+			else if($(image).attr("data-src")){
+				return $(image).attr("data-src").replace(settings.token, currentDisplay);
+			}
+			// Global fallback, return current src
 			else {
-				currentDisplay = settings.displays.defaults.display.defaults;
+				return $(image).attr("src");
 			}
-		}
-		// Edit the image SRC attribute.
-		return $(image).attr("data-src").replace(settings.token, currentDisplay);
+			return null;
 		};
 	
 		/** 
@@ -155,7 +183,7 @@
 			images.each(function(){
 				if (windowView(this, settings) || settings.force === true){
 					// Check if this is the first load or if the mediaquery has changed.
-					if($(this).attr('data-src') && $(this).attr('data-current-mediaq')!=CurrentMediaQuery){
+					if($(this).attr('data-current-mediaq')!=CurrentMediaQuery){
 						$(this).attr('data-current-mediaq', CurrentMediaQuery);
 						loadImage(this, callOrigin);
 						$(this).fadeIn(400);

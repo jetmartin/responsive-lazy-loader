@@ -139,12 +139,37 @@ $.fn.responsivelazyloader.defaults.displays = { // The displays to combine grid 
     };
 </pre>
 	
+				<h3>OVERRIDE IMAGE URL FOR DISPLAY AND/OR BREAKPOINT</h3>
+				<p>The image url can be overriden for a specific display and/or breakpoint using some additionals attributs.</p>
+				<ol>
+					<li>"data-src-{display}-{mediaquerie}" will override image url for a combinaison of display & breakpoint.</li>
+					<li>"data-src-{display}" will override image url for a display.</li>
+					<li>"data-src-{mediaquerie}" will override image url for a breakpoint (mediaquerie).</li>
+				</ol>
+				<p>Where "{display}" and "{mediaquerie}" are teh display and mediaquerie names in settings array.</p>
+				<p>Important notice about the "Token" on the image urls.</p>
+				<ol>
+					<li>If you use it, the images will be loaded according to the configuration of the lazyloader.</li>
+					<li>If you do not use it, the same image will be loaded for each displays/breakpoints.</li>
+				</ol>
+				<p>If your CMS/Framwork do not allows you to use non valid images urls (using token), you can use this way to use the lazyloader. In this case, to prevent bugs, set a "data-src-defaults" attribut.</p>
+				<p>The following exemple is for a breakpoint name "phone" and a display name "sidebar". The image loaded on display "sidebar" will be a specif one using the responsive token. The images loaded for the breakpoint "phone" do not use the responsie token.</p>
+				<pre>&lt;img
+  class="img-responsive"
+  data-src-sidebar-phone="http://www.domain.tld/an-image.jpg"
+  data-src-sidebar="http://www.domain.tld/another-image-[[display]].jpg"
+  data-src-phone="http://www.domain.tld/a-third-image.jpg"
+  data-src="http://www.domain.tld/image-[[display]].jpg"
+  src="js/pixel.gif"
+  alt="image"&gt;
+&lt;noscript&gt;&lt;img class="image-asset" src="http://www.domain.tld/image-defaults.jpg" alt="image"&gt;&lt;/noscript&gt;</pre>
+
 				<h3>AJAX</h3>
 				<p>The lazyloader can be used with AJAX.</p>
 				<pre>// Init lazyloader
 $("img[data-src]").responsivelazyloader();
 // Init lazyloder after ajax events.
-$("body").on({ ajaxStop : function(){ $("img[data-src]").responsivelazyloader(); }});</pre>
+$(document).ajaxStop(function(){ $("img[data-src]").responsivelazyloader(); });</pre>
 				<h3>Settings</h3>
 				<p>All available settings :</p>
 				<ul>
