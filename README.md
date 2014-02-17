@@ -112,7 +112,7 @@ $("img[data-src]").responsivelazyloader();
 
 In order to be consistant with CSS declaration, the latest valid mediquery will be used.
 You can use simple mediaqueries or more complex ones using orientation or pixel-ratio.
-To start in a simple way with the plugin, copy/past the mediaqueries in the same order from you'r steelsheets.
+To start in a simple way with the plugin, copy/past the mediaqueries in the same order from your steelsheets.
 
 ##Use Multiple displays
 
@@ -159,7 +159,7 @@ $.fn.responsivelazyloader.defaults.displays = { // The displays to combine grid 
     };
 ```
 
-###OVERRIDE IMAGE URL FOR DISPLAY AND/OR BREAKPOINT
+###Override image url for display and/or breakpoint
 
 The image url can be overriden for a specific display and/or breakpoint using some additionals attributs.
 
