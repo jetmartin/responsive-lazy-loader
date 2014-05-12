@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:og="http://opengraphprotocol.org/schema/">
 <head>
-    <base href="/" />
+    <base href="/responsive-lazy-loader/" />
 	<title>DEMO</title>
 	<meta charset="utf-8"/>
     <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"/>      
@@ -37,7 +37,7 @@
         <div class="row">
         	<h2>Default implementation</h2>
         	<p>Using bootstrap CSS and a flickr image.</p>
-        	<div class="col-md-8">
+	       	<div class="col-md-8">
 				<img class="img-responsive" data-src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_[[display]].jpg" src="img/pixel.gif" alt="image">
 				<noscript><img class="image-asset" src="http://farm7.staticflickr.com/6022/5921821207_cfe8904e15_z.jpg" alt="image"></noscript>
 			</div>
@@ -93,7 +93,29 @@
 				<p>Override image on "<em>default</em>" display & "<em>desktop</em>" breakpoint but use the global lazyloader configuration on the new image according to display & breakpoint.</p>
 			</div>
         </div>
-    </section>
+
+		<!-- Container data-src example -->
+		<div class="row">
+			<h2>Background responsive lazy loading</h2>
+			<p>Using bootstrap CSS and a flickr image.</p>
+			<div class="col-md-8">
+				<div
+						style="width: 100%; height:300px;"
+						class="img-responsive"
+						data-src="http://farm4.staticflickr.com/3745/11414868284_40cc4879e0_[[display]].jpg"
+						></div>
+			</div>
+			<div class="col-md-4">
+				<div
+						style="width: 100%; height:300px;"
+						class="img-responsive"
+						data-src-tablet="http://farm6.staticflickr.com/5514/11414864075_4d167cbd5c_[[display]].jpg"
+						data-src="http://farm6.staticflickr.com/5502/11414867446_accb4a5f77_[[display]].jpg"
+						></div>
+			</div>
+		</div>
+
+	</section>
     
 </div><!-- /main-container -->	
 
