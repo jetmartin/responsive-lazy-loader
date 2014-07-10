@@ -321,7 +321,7 @@
 			}
 		}
 		// Fallback using Modernizr MatchMedia support detection.
-		else if(Modernizr){ // Prevent error if Modernizr isn't availabe.
+        else if (typeof Modernizr !== "undefined") { // Prevent error if Modernizr isn't availabe.
 			if(Modernizr.mq(media)){
 				return true;
 			} else {
