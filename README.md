@@ -15,9 +15,9 @@ The lazy loader recognizes the current display (size in a grid system for exampl
 
 It works with any HTML/CSS structure/framework as bootstrap or foundation and any image provider as Flickr or CMS using image preset (rendition, styles, ...) as Adobe CQ or Drupal.
 
-The plugin is only 3Ko (minified).
+The plugin is only 4Ko (minified).
 
-View a demo at http://jetmartin.github.io/responsive-lazy-loader/demo.html.
+[View a demo.](http://jetmartin.github.io/responsive-lazy-loader/demo.html)
         		
 ##How to use
 
@@ -237,14 +237,17 @@ $(window).on('responsiveImageLoaded', function(event){
 });
 ```
 
+###Images do not load
+
+If you are using parallax or single page design, anyway fixe positionning, you will may have some troubles on image visibility detection.
+In this case you can override the windovWiew function to be able to manage the "visibility" of images according to your specific layout/library.
+
 ##More
 
-See the responsive lazy loader page on jQuery : http://plugins.jquery.com/responsivelazyloader
+See the responsive lazy loader page on [jQuery.com](http://plugins.jquery.com/responsivelazyloader).
 
-You can also use Responsive Lazy Loader on Drupal using our Drupal Module : https://drupal.org/sandbox/jetmartin/2158105
+You can also use Responsive Lazy Loader on Drupal using our [Drupal Module](https://drupal.org/sandbox/jetmartin/2158105 "See Drupal responsive lazy loader module").
 
-For more information, please contact me @j_et_martin.
+For more information, please contact me [@j_et_martin](https://twitter.com/J_et_martin "Find me on twitter.").
 
-##Valtech
-
-This module is supported by Valtech : http://www.valtech.fr
+This module was initialy supported by [Valtech](http://www.valtech.fr).

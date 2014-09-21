@@ -4,7 +4,7 @@
  * @file
  * responsivelazyloader JQuery plugin
  *
- * @maintainers : Valtech http://www.valtech.com
+ * @maintainers : Jean-etienne MARTIN http://www.jet-martin.com
  * @author : Jean-etienne MARTIN http://www.jet-martin.com
  *
  * The image size must be 100% for the image to be "responsive" it means 
@@ -42,7 +42,7 @@
  *         - CurrentMediaQuery  : the current mediaquery key according to Settings.mediaQueries.
  *         - PreviousMediaQuery : The previous mediaquery key according to Settings.mediaQueries.
  *
- * Version 0.1.7
+ * Version 0.1.8
  * 
  * dependancie : jquery 1.3.1
  * optional : modernizr compiled with mq() function.
@@ -87,12 +87,13 @@
         }
 
         /**
-         * Set an attribute "data-display" to the image
+         * Set an attribute "data-display" to the image.
+         * 
          * The first valid display will be set.
          * The image or a parent element can have the gridClass
          * For advance config, You can specify a "parent" element.
          * In this case, the parent must have the gridClass.
-         * @param {Object} image
+         * @param image {Object}
          */
         function imagesSetDisplay(image) {
             var currentDisplay = 'defaults'; // Default display (fallback)
@@ -108,7 +109,6 @@
         }
     
         /**
-         * imagesGetDisplay
          * Get the image SRC value using the proper rendition name 
          * depending of the mediaquery & the image display.
          * 
@@ -117,7 +117,8 @@
          * data-src-{display}
          * data-src-{MediaQuery}
          * 
-         * @return string image apropriate src value.
+         * @return image {string} 
+         *     The apropriate src value.
          */
         function imagesGetDisplay(image) {
             if (!$(image).attr('data-display')) {
@@ -175,11 +176,19 @@
         }
     
         /** 
-         * Loading actual images
+         * Load images who are "visible".
+         * 
+         * Visible is defined by the windowView function according to the settings.
+         * If the "force" parameter is set to TRUE, all the images will be consider as visible.
+         * 
+         * @see $.fn.responsivelazyloader.windowView()
          *
-         * @param images {jQuery<Image>} A jQuery set of images
-         * @param settings {Object} the settings
-         * @param [callOrigin] {String} Determines the origin of the call. Can be either 'load'|'scroll'|'resize'
+         * @param images {jQuery<Image>}
+         *     A jQuery set of images
+         * @param settings {Object}
+         *     the settings
+         * @param [callOrigin] {String}
+         *     Determines the origin of the call. Can be either 'load'|'scroll'|'resize'
          */
         function loadActualImages(images, settings, callOrigin) {
             images.each(function () {
@@ -195,10 +204,11 @@
         }
 
         /**
-         * loadImage
          * Load the image and trigger appropriate events.
+         * 
          * @param image {Image}
-         * @param [callOrigin] {String} determines the origin of the call. Can be either 'load'|'scroll'|'resize'
+         * @param [callOrigin] {String}
+         *     Determines the origin of the call. Can be either 'load'|'scroll'|'resize'
          */
         function loadImage(image, callOrigin) {
             $(image).hide().one('load', function () {
@@ -225,9 +235,9 @@
                  * fire success callback only if callOrigin param undefined (default) or
                  * if callOrigin value matches settings use cases 
                  */
-                if (callOrigin === undefined || callOrigin === 'load'
-                    || (callOrigin === 'scroll' && settings.useScroll)
-                    || (callOrigin === 'resize' && settings.useResize))
+                if (callOrigin === undefined || callOrigin === 'load' ||
+                    (callOrigin === 'scroll' && settings.useScroll) ||
+                    (callOrigin === 'resize' && settings.useResize))
                 {
                     // Call the callback here because we are certain the image is loaded here
                     settings.onImageShow.call($(this));
@@ -240,8 +250,9 @@
                     });
                     imagesCount = images.length;
                 }
-                $(this).off('error');
-
+                if(typeof $(this).off !== "undefined") { // Prevent issues with jQurey < 1.7
+                    $(this).off('error');
+                }
             }).each(function () {
                 // if image has width and height, it means that it is already loaded
                 // let's trigger load event so the .one('load', ...) above is then executed
@@ -277,10 +288,13 @@
 
     /**
      * Return TRUE if the mediaquery passed is valid.
+     * 
      * Use modernizr.mq as fallback for old browsers (if available).
      * Return false if mediaquery detection is unavailable.
-      * @param string media A mediaquery string as a CCS @media
-      * @return bool
+     * 
+     * @param media {string}
+     *     A mediaquery string as a CCS @media
+     * @return {bool}
      */
     $.fn.responsivelazyloader.is_valid_mediaQuery = function (media) {
         // MatchMedia support detection.
@@ -292,7 +306,7 @@
             }
         }
         // Fallback using Modernizr MatchMedia support detection.
-        else if (Modernizr) { // Prevent error if Modernizr isn't availabe.
+        else if (typeof Modernizr !== "undefined") { // Prevent error if Modernizr isn't availabe.
             if (Modernizr.mq(media)) {
                 return true;
             } else {
@@ -302,15 +316,21 @@
         // Return false if mediaquery detection is unavailable.
         return false;
     };
+
     /**
      * Return the current mediaquery.
+     * 
      * In order to be consistent with the CSS, return the last valid mediaquery.
-     * @return string the ID of the current "mediaQueries"
+     * This function is "public" so you can use it for other modules having
+     * responsivelazyloader as a dependency.
+     *  
+     * @return {string}
+     *     The ID of the current "mediaQueries"
      */
     $.fn.responsivelazyloader.getCurrentMediaQuery = function () {
         var current = 'defaults';    //default fallback value
         var settings = $.fn.responsivelazyloader.defaults;
-        for(m in settings.mediaQueries) {
+        for (var m in settings.mediaQueries) {
             if ($.fn.responsivelazyloader.is_valid_mediaQuery(settings.mediaQueries[m])) {
                 current = m;
             }
@@ -319,11 +339,19 @@
     };
 
     /**
-     * windowView
      * Check if the images are within the window view (top, bottom, left and right)
-     * @param image {Object} The image object
-     * @param settings {Object} The responsive lazyloading settings
-     * @return bool
+     * 
+     * If you had some troubles with images "visibility" you probably use fixed or
+     * absolute positionning (single page design or prallax) you can override the 
+     * default windovWiew function to use your paralax library API to define images
+     * as within the window view. (checking if praents elements have "active" class
+     * as an exemple).
+     * 
+     * @param image {Object}
+     *     The image object
+     * @param settings {Object}
+     *     The responsive lazyloading settings
+     * @return {bool}
      */
     $.fn.responsivelazyloader.windowView = function  (image, settings) {
         // window variables

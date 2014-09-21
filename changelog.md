@@ -1,6 +1,10 @@
 responsive-lazy-loader
 ======================
 
+##O.1.8 : 
+
+Allow to override windowView function to allow developpers to deal with custom positionning.
+
 ##O.1.7 : 
 
 Allow to override image url for specific display and/or breakpoint.
