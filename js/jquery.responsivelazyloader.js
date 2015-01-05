@@ -197,7 +197,7 @@
 						if (element.attr('data-current-mediaq') != CurrentMediaQuery) {
 							element.attr('data-current-mediaq', CurrentMediaQuery);
 							loadImage(element, callOrigin);
-							element.fadeIn(400);
+							element.fadeIn(settings.fade);
 						}
 					}
 				});
@@ -381,6 +381,7 @@
 		 */
 		$.fn.responsivelazyloader.defaults = {
 			distance: 0, 							// the distance (in pixels) between the image and active window for loading the actual image
+			fade: 400,								// the speed of the fading effect. Set 0 to disable.
 			force: false, 							// Force images loading without distance.
 			useScroll: true, 						// (Dis)Allow settings.onImageShow() to be called on scroll. 
 			useResize: true, 						// (Dis)Allow settings.onImageShow() to be called after window resizes.
