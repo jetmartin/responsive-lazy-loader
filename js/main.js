@@ -81,7 +81,10 @@ $('img[data-src]').responsivelazyloader({
     console.log('onImageError callback');
   }
 }).attr('data-test', 'TEST');
-// Init lazyloder after ajax events.
+
+/**
+ * Init lazyloder after ajax events.
+ */
 $(document).ajaxStop(function(){ $('img[data-src]').responsivelazyloader(); });
 
 
