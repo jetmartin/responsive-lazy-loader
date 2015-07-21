@@ -29,7 +29,9 @@
  * You can use the onImageShow callback function for custom actions (on height for example).
  * 
  * Settings:
- * - distance          = Int      | distance of the image to the viewable browser screen before it gets loaded
+ * - images            = Bool     | Allow module to lazyload images (img, picture, video cover)
+ * - backgrounds       = Bool     | Allow module to lazyload CSS backgrounds images (any tags)
+ * - distance          = Int      | Distance of the image to the viewable browser screen before it gets loaded
  * - token             = string   | The token replaced by the current display pattern.
  * - force             = Bool     | Force loading without distance.
  * - mediaQueries      = Object   | The mediaquery used by the lazy loader.
@@ -58,8 +60,15 @@
   $.fn.responsivelazyloader = function (options) {
     // Global settings
     var settings = $.extend($.fn.responsivelazyloader.defaults, options);
-    // Ensure the passed elements are images. 
-    var images = $(this).filter('img');
+    var images = [];
+    if(settings.images){
+      // Ensure the passed elements are images. 
+      images.concat($(this).filter('img')); //@TODO manage picture & video cover.
+    }
+    if(settings.backgrounds){
+      // Ensure the passed elements are images. 
+      images.concat($(this)); //@TODO manage backgrounds.
+    }
     // Counter for custom event when all the images are loaded.
     var imagesCount = images.length;
     if (imagesCount > 0) {
@@ -384,6 +393,8 @@
    * Setup plugin defaults
    */
   $.fn.responsivelazyloader.defaults = {
+    images: true,              // Allow module to lazyload images (img, picture, video cover)
+    backgrounds: false,        // Allow module to lazyload CSS backgrounds images (any tags)
     distance: 0,               // the distance (in pixels) between the image and active window for loading the actual image
     force: false,              // Force images loading without distance.
     useScroll: true,           // (Dis)Allow settings.onImageShow() to be called on scroll. 
