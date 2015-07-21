@@ -1,0 +1,10 @@
+{
+  "indent": 4,
+  "condense": true,
+  "indent_inner_html": true,
+  "unformatted": [
+    "a",
+    "pre"
+  ],
+  "wrap_line_length": 80
+}

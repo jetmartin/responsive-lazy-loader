@@ -1,0 +1,25 @@
+{
+  "name": "responsive_lazy_loader",
+  "description": "Allow you to load image renditions according to the current mediaqueries and/or CSS display such as a grid system. For example, it allows you to load large images on retina display and small ones on other devices. It can be used with a flickr account as well as with CMS renditions and a grid system as bootstrap or some custom HTML structure.",
+  "version": "1.0.0",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jetmartin/responsive-lazy-loader.git"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "^2.1.2",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-lazyload": "^1.0.3",
+    "jshint-stylish": "^2.0.0",
+    "load-grunt-tasks": "^3.1.0",
+    "time-grunt": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

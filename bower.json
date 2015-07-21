@@ -1,0 +1,15 @@
+{
+  "name": "responsive_lazy_loader",
+  "private": false,
+  "dependencies": {
+    "jquery": "<1.5"
+  },
+  "devDependencies": {
+    "jquery": "<1.5"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
