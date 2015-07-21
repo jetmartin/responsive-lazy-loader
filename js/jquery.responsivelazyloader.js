@@ -47,9 +47,9 @@
  *     - CurrentMediaQuery  : the current mediaquery key according to Settings.mediaQueries.
  *     - PreviousMediaQuery : The previous mediaquery key according to Settings.mediaQueries.
  *
- * Version 0.1.8
+ * Version 1.x
  * 
- * dependancie : jquery 1.3.1
+ * dependancie : jquery > 1.3.1
  * optional    : modernizr compiled with mq() function.
  */
 
@@ -61,6 +61,9 @@
     // Global settings
     var settings = $.extend($.fn.responsivelazyloader.defaults, options);
     var images = [];
+    var instances = (instances === undefined) ? [] : instances;
+    var currentInstance = 0;
+    // @TODO prevent image to have multiple instances.
     if(settings.images){
       // Ensure the passed elements are images. 
       images.concat($(this).filter('img')); //@TODO manage picture & video cover.
@@ -72,8 +75,17 @@
     // Counter for custom event when all the images are loaded.
     var imagesCount = images.length;
     if (imagesCount > 0) {
+      // Set current settings as a new instance.
+      instances.concat(settings);
+      // Add currentInstance to images.
+      var currentInstance = instances.length - 1;
+      images.responsivelazyloaderInstance = currentInstance;
       // Load on page load.
       var CurrentMediaQuery = $.fn.responsivelazyloader.getCurrentMediaQuery();
+      // Implement the event listner if not already exist on object.
+      for(var i in images){
+        images[i].on('onMediaqueryChange', function(){loadActualImages('resize')}; //@TODO Manage compatibility with trigger ($<1.7).
+      }
       // Wait for document ready to load images to prevent issues with other JS (as AD scripts using document.write).
       $(document).ready(function () {
         loadActualImages(images, settings, 'load');
