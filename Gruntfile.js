@@ -136,16 +136,17 @@ module.exports = function (grunt) {
           dest: '<%= config.app %>/scripts/jquery',
           src: ['jquery.min.js']
         }]
+      }
+    },
+    verb: {
+      options: {
+        docs: 'docs'
       },
-
-      // The "readme" task
       readme: {
-        options: {
-          metadata: {
-            name: '<%= pkg.name %>',
-            description: '<%= pkg.description %>'
-          }
-        }
+        files: [
+          {src: ['.verbrc.md'], dest: 'README.md'},
+          // {expand: true, cwd: 'docs/src', src: ['**/*.md'], dest: 'docs', ext: '.md'},
+        ]
       }
     }
   });
@@ -156,7 +157,7 @@ module.exports = function (grunt) {
   grunt.lazyLoadNpmTasks('grunt-contrib-clean', 'clean');
   grunt.lazyLoadNpmTasks('grunt-contrib-uglify', 'uglify');
   grunt.lazyLoadNpmTasks('grunt-contrib-watch', 'watch');
-  grunt.lazyLoadNpmTasks('grunt-readme', 'readme');
+  grunt.lazyLoadNpmTasks('grunt-verb', 'verb');
 
   // Register tasks.
   grunt.registerTask('build', [
@@ -167,8 +168,7 @@ module.exports = function (grunt) {
     'clean:server',
     'uglify:dist',
     'clean:js',
-    'copy:dist',
-    // 'readme'
+    'copy:dist'
   ]);
   grunt.registerTask('default', [
     'build'
