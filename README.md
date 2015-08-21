@@ -27,11 +27,11 @@ bower install responsive_lazy_loader --save-dev
 
 Allow you to load image renditions according to the current mediaqueries and/or CSS display such as a grid system. For example, it allows you to load large images on retina display and small ones on other devices. It can be used with a flickr account as well as with CMS renditions and a grid system as bootstrap or some custom HTML structure.
 
-[Read more about it.](doc/main_frame.md)
+[Read more about it.](./docs/main_frame.md)
 
 ##How to use
 
-[Read how to use it.](doc/how_to_use.md)
+[Read how to use it.](./docs/how_to_use.md)
 
 ##Demo
 
@@ -41,11 +41,11 @@ Allow you to load image renditions according to the current mediaqueries and/or 
 
 ##Options
 
-[See available options.](doc/settings.md)
+[See available options.](./docs/settings.md)
 
 ##Debug
 
-[See how to debug.](doc/debug.md)
+[See how to debug.](./docs/debug.md)
 
 
 [J-Et. Martin](http://www.jet-martin.com)
