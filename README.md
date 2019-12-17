@@ -1,15 +1,21 @@
 responsive-lazy-loader
 ======================
 
+> Notice : This module is deprecated.
+
+I will not maintain this module anymore. If someone want to maintain it, I can share repos ownership.
+
+---
+
 A responsive lazy loader. Load image rendition according to CSS display &amp; breakpoint.
 
-##Main frame
+## Main frame
 
 Responsive lazy loader allows you lo load the most appropriate image renditions according to the current breakpoint and to the current display into the CSS grid-system.
 
 It can be used as a simple lazy loader, simply as a responsive lazy loader (taking care of the breakpoint) or as an advanced lazy loader taking care of breakpoint and display.
 
-###How it works
+### How it works
 
 The lazy loader recognizes the current display (size in a grid system for example) and breakpoint (mediaquery) and replaces a token in the image URL.
 
@@ -19,9 +25,9 @@ The plugin is only 4Ko (minified).
 
 [View a demo.](http://jetmartin.github.io/responsive-lazy-loader/demo.html)
         		
-##How to use
+## How to use
 
-###HTML
+### HTML
 
 Replace your img tags by the following :
 
@@ -30,7 +36,7 @@ Replace your img tags by the following :
 <noscript><img class="image-asset" src="http://www.domain.tld/img-defaults.jpg" alt="image"></noscript>
 ```
 
-###CSS
+### CSS
 
 The image size must be at 100% for the image to be "responsive", it means that the image will be adjusted to the parent element. You must set up your breakpoint to never upscale an image and to load the image closest to the maximum display width.
 
@@ -55,14 +61,14 @@ Add the noscript fallback :
 
 Always use the "desktop" as default value because almost all modern device browsers support mediaqueries detections. This is not the case for old desktop browsers, such as old IE, so the current mediaquery will always be the "defaults" one. Even in an old browser, the display will be recognized and the appropriate image will load anyway.
 
-###Tip
+### Tip
 
 The height auto is not displayed the same way on all the browsers.
 To prevent the image height to change on an image load (text moving effect in some browsers), the image height has to be managed in CSS according to the site layout.
 
 If all the images do not necessary have the same ratio (as 16/9 or 4/3), you can use the onImageShow callback function for custom actions.
 
-##How to configure
+## How to configure
 
 You can add arguments on the function call or override the defaults.
 
@@ -108,13 +114,13 @@ $.fn.responsivelazyloader.defaults.displays = {	// The displays to combine grid 
 $("img[data-src]").responsivelazyloader();
 ```
 
-##How to use Breakpoints (mediaQueries)
+## How to use Breakpoints (mediaQueries)
 
 In order to be consistant with CSS declaration, the latest valid mediquery will be used.
 You can use simple mediaqueries or more complex ones using orientation or pixel-ratio.
 To start in a simple way with the plugin, copy/past the mediaqueries in the same order from your steelsheets.
 
-##Use Multiple displays
+## Use Multiple displays
 
 Do not use multiple instances of the plugin, use the displays.
 You can declare diffrent configuration for some images in the same page using the displays config element.
@@ -159,7 +165,7 @@ $.fn.responsivelazyloader.defaults.displays = { // The displays to combine grid 
     };
 ```
 
-###Override image url for display and/or breakpoint
+### Override image url for display and/or breakpoint
 
 The image url can be overriden for a specific display and/or breakpoint using some additionals attributs.
 
@@ -190,7 +196,7 @@ The following exemple is for a breakpoint name "phone" and a display name "sideb
 <noscript><img class="image-asset" src="http://www.domain.tld/image-defaults.jpg" alt="image"></noscript>
 ```
 
-##AJAX
+## AJAX
 
 The lazyloader can be used with AJAX.
 
@@ -201,7 +207,7 @@ $("img[data-src]").responsivelazyloader();
 $(document).ajaxStop(function(){ $("img[data-src]").responsivelazyloader(); });
 ```
 
-##Settings
+## Settings
 
 All available settings :
 
@@ -222,7 +228,7 @@ Custom events :
 		- CurrentMediaQuery : the current mediaquery key according to Settings.mediaQueries.
 		- PreviousMediaQuery : The previous mediaquery key according to Settings.mediaQueries.
 
-##Debug
+## Debug
 
 To help you setup the lazyloader, you can use the following code :
 
@@ -237,12 +243,12 @@ $(window).on('responsiveImageLoaded', function(event){
 });
 ```
 
-###Images do not load
+### Images do not load
 
 If you are using parallax or single page design, anyway fixe positionning, you will may have some troubles on image visibility detection.
 In this case you can override the windovWiew function to be able to manage the "visibility" of images according to your specific layout/library.
 
-##More
+## More
 
 See the responsive lazy loader page on [jQuery.com](http://plugins.jquery.com/responsivelazyloader).
 
