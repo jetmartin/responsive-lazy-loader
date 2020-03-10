@@ -211,14 +211,15 @@ $(document).ajaxStop(function(){ $("img[data-src]").responsivelazyloader(); });
 
 All available settings :
 
-1. distance        = Int      | distance of the image to the viewable browser screen before it gets loaded</li>
-2. token           = string   | The token replaced by the current display pattern.</li>
-3. force           = Bool     | Force loading without distance.</li>
-4. mediaQueries    = Object   | The mediaquery used by the lazy loader.</li>
-5. displays        = Object   | The display properties, match the grid class and the mediaqueries</li>
-6. onImageShow     = function | Callback when an image has been lazy loaded.</li>
-7. onImageError    = function | Callback when an image could not be lazy loaded.</li>
-8. onAllImagesLoad = function | Callback when all the images of the set are loaded.</li>
+1. distance        = Int      | Distance of the image to the viewable browser screen before it gets loaded.</li>
+2. fade			   = Int      | Speed of the fading effect. Set 0 to disable.</li>
+3. token           = string   | The token replaced by the current display pattern.</li>
+4. force           = Bool     | Force loading without distance.</li>
+5. mediaQueries    = Object   | The mediaquery used by the lazy loader.</li>
+6. displays        = Object   | The display properties, match the grid class and the mediaqueries</li>
+7. onImageShow     = function | Callback when an image has been lazy loaded.</li>
+8. onImageError    = function | Callback when an image could not be lazy loaded.</li>
+9. onAllImagesLoad = function | Callback when all the images of the set are loaded.</li>
 
 Custom events :
 
